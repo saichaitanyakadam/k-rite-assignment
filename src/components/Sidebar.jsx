@@ -66,50 +66,52 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       </div>
       <nav className="flex-1">
         {folders.map((folder, index) => (
-          <Link
-            key={index}
-            to={folder.path}
-            onClick={() => {
-              isOpen && setIsOpen(false);
-            }}
-          >
-            <div className="flex flex-col">
-              <div className="flex items-center justify-between gap-2">
-                <IoFolderOpenOutline />
-                <p className="flex-1">{folder.title}</p>
-                {folder.sub.length > 0 && (
-                  <button type="button">
-                    {show.hide && show.index === index ? (
-                      <MdKeyboardArrowUp
-                        onClick={() => {
-                          setShow({
-                            hide: false,
-                            index,
-                          });
-                        }}
-                      />
-                    ) : (
-                      <MdOutlineKeyboardArrowDown
-                        onClick={() => {
-                          setShow(() => ({
-                            hide: true,
-                            index,
-                          }));
-                        }}
-                      />
-                    )}
-                  </button>
-                )}
-              </div>
-              {folder.sub.length > 0 && show.hide && index === show.index && (
-                <nav className="ml-6">
-                  {folder.sub.map((sub, index) => (
-                    <div key={index}>{sub.title}</div>
-                  ))}
-                </nav>
+          <div className="flex flex-col" key={index}>
+            <div className="flex items-center justify-between gap-2">
+              <IoFolderOpenOutline />
+              <Link
+                to={folder.path}
+                onClick={() => {
+                  isOpen && setIsOpen(false);
+                }}
+                className="flex-1"
+              >
+                {folder.title}
+              </Link>
+              {folder.sub.length > 0 && (
+                <button type="button">
+                  {show.hide && show.index === index ? (
+                    <MdKeyboardArrowUp
+                      onClick={() => {
+                        setShow({
+                          hide: false,
+                          index,
+                        });
+                      }}
+                    />
+                  ) : (
+                    <MdOutlineKeyboardArrowDown
+                      onClick={() => {
+                        setShow(() => ({
+                          hide: true,
+                          index,
+                        }));
+                      }}
+                    />
+                  )}
+                </button>
               )}
             </div>
-          </Link>
+            {folder.sub.length > 0 && show.hide && index === show.index && (
+              <nav className="ml-6 flex flex-col">
+                {folder.sub.map((sub, index) => (
+                  <Link to={sub.path} key={index}>
+                    {sub.title}
+                  </Link>
+                ))}
+              </nav>
+            )}
+          </div>
         ))}
       </nav>
       <ul>
