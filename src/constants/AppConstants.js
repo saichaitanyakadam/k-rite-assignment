@@ -20,19 +20,24 @@ export const folders = [
     sub: [
       {
         title: "Roadmap",
+        path: "/products/roadmap",
       },
       {
         title: "Feedback",
+        path: "/products/feedback",
       },
       {
         title: "Perfomance",
+        path: "/products/perfomance",
       },
 
       {
         title: "Team",
+        path: "/products/team",
       },
       {
         title: "Analytics",
+        path: "products/analytics",
       },
     ],
   },
@@ -48,19 +53,24 @@ export const folders = [
     sub: [
       {
         title: "Roadmap",
+        path: "/products/roadmap",
       },
       {
         title: "Feedback",
+        path: "/products/feedback",
       },
       {
         title: "Perfomance",
+        path: "/products/perfomance",
       },
 
       {
         title: "Team",
+        path: "/products/team",
       },
       {
         title: "Analytics",
+        path: "products/analytics",
       },
     ],
   },
